@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Dashboard</h2>
+        <div class="stats">
+            <div class="card">Total: {{ total }}</div>
+            <div class="card green">Passed: {{ passed }}</div>
+            <div class="card red">Failed: {{ failed }}</div>
+        </div>
+
+        {% if role == 'admin' %}
+        <a href="/add"><button>+ Add Student</button></a>
+        {% endif %}
+        <a href="/logout"><button class="logout">Logout</button></a>
+
+        <table>
+            <tr>
+                <th>Roll No</th><th>Name</th>
+                <th>Tamil</th><th>English</th><th>Maths</th>
+                <th>Science</th><th>Social</th>
+                <th>Total</th><th>Average</th>
+                <th>Grade</th><th>Status</th>
+                {% if role == 'admin' %}<th>Action</th>{% endif %}
+            </tr>
+            {% for s in students %}
+            <tr>
+                <td>{{ s.roll_number }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.tamil }}</td>
+                <td>{{ s.english }}</td>
+                <td>{{ s.maths }}</td>
+                <td>{{ s.science }}</td>
+                <td>{{ s.social }}</td>
+                <td>{{ s.total() }}</td>
+                <td>{{ "%.1f"|format(s.average()) }}</td>
+                <td>{{ s.grade() }}</td>
+                <td style="color:{{'green' if s.status()=='Pass' else 'red'}}">
+                    {{ s.status() }}
+                </td>
+                {% if role == 'admin' %}
+                <td><a href="/delete/{{ s.id }}">Delete</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

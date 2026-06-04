@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Student</h2>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Student Name" required><br>
+            <input type="text" name="roll" placeholder="Roll Number" required><br>
+            <input type="number" name="tamil" placeholder="Tamil Marks" min="0" max="100" required><br>
+            <input type="number" name="english" placeholder="English Marks" min="0" max="100" required><br>
+            <input type="number" name="maths" placeholder="Maths Marks" min="0" max="100" required><br>
+            <input type="number" name="science" placeholder="Science Marks" min="0" max="100" required><br>
+            <input type="number" name="social" placeholder="Social Marks" min="0" max="100" required><br>
+            <button type="submit">Add Student</button>
+            <a href="/dashboard"><button type="button">Cancel</button></a>
+        </form>
+    </div>
+</body>
+</html>
